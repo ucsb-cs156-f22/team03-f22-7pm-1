@@ -3,9 +3,8 @@
 * <https://f22-7pm-1-team03.herokuapp.com>
 
 * Storybook (production): <https://ucsb-cs156-f22.github.io/team03-f22-7pm-1-docs/>
-* Storybook (development/qa): <https://ucsb-cs156-f22.github.io/f22-7pm-1-team03-docs-qa>
+* Storybook (development/qa): <https://github.com/ucsb-cs156-f22/team03-f22-7pm-1-docs-qa>
 
-TODO: Leave the results of the TODOS, but remove all of the TODO instructions from the readme.
 
 # Setup before running application
 
