@@ -3,7 +3,6 @@
 * <https://f22-7pm-1-team03.herokuapp.com>
 
 * Storybook (production): <https://ucsb-cs156-f22.github.io/team03-f22-7pm-1-docs/>
-* Storybook (development/qa): <https://ucsb-cs156-f22.github.io/f22-7pm-1-team03-docs-qa>
 
 # Setup before running application
 
