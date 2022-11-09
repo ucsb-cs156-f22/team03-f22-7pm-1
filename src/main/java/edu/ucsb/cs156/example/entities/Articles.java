@@ -16,13 +16,15 @@ import lombok.Builder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "ucsbdates")
-public class UCSBDate {
+@Entity(name = "articles")
+public class Articles {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
+    private Long id;
 
-  private String quarterYYYYQ;
-  private String name;  
-  private LocalDateTime localDateTime;
+    private String title;
+    private String url;
+    private String explanation;
+    private String email;
+    private LocalDateTime dateAdded;
 }
