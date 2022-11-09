@@ -1,11 +1,11 @@
 # STARTER-team03
 
+* <https://f22-7pm-1-team03.herokuapp.com>
 
-TODO: Add a link to the deployed Heroku app for your team here, e.g.
+* Storybook (production): <https://ucsb-cs156-f22.github.io/team03-f22-7pm-1-docs/>
+* Storybook (development/qa): <https://ucsb-cs156-f22.github.io/f22-7pm-1-team03-docs-qa>
 
-* <https://f22-7pm-3-team02.herokuapp.com>
-
-TODO: Add correct links to the -docs and -docs qa GitHub pages sites
+TODO: Leave the results of the TODOS, but remove all of the TODO instructions from the readme.
 
 * Storybook (production): <https://ucsb-cs156-f22.github.io/STARTER-team03-docs>
 * Storybook (development/qa): <https://ucsb-cs156-f22.github.io/STARTER-team03-docs-qa>
