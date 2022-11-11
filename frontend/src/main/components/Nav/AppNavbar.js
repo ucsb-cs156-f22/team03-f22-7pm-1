@@ -70,7 +70,15 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                     <NavDropdown.Item as={Link} to="/menuitemreviews/create" data-testid="appnavbar-menu-item-reviews-create">Create</NavDropdown.Item>
                   </NavDropdown>
                 )
-              } 
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Recommendations" id="appnavbar-recommendations-dropdown" data-testid="appnavbar-recommendations-dropdown" >
+                    <NavDropdown.Item as={Link} to="/recommendations/list" data-testid="appnavbar-recommendations-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/recommendations/create" data-testid="appnavbar-recommendations-create">Create</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
               {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="UCSBDates" id="appnavbar-ucsbdates-dropdown" data-testid="appnavbar-ucsbdates-dropdown" >
@@ -90,7 +98,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
-  
+
             </Nav>
             <Nav className="ml-auto">
               {/* This `nav` component contains all navigation items that show up on the right side */}
