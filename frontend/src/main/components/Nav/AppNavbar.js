@@ -82,11 +82,19 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
-              {
+               {
                 hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="Help Request" id="appnavbar-help-request-dropdown" data-testid="appnavbar-help-request-dropdown" >
-                    <NavDropdown.Item as={Link} to="/helpRequest/list" data-testid="appnavbar-help-request-list">List</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/helpRequest/create" data-testid="appnavbar-help-request-create">Create</NavDropdown.Item>
+                  <NavDropdown title="Menu Item Review" id="appnavbar-menu-item-reviews-dropdown" data-testid="appnavbar-menu-item-reviews-dropdown" >
+                    <NavDropdown.Item as={Link} to="/menuitemreviews/list" data-testid="appnavbar-menu-item-reviews-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/menuitemreviews/create" data-testid="appnavbar-menu-item-reviews-create">Create</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              } 
+               {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Help Request" id="appnavbar-helprequest-dropdown" data-testid="appnavbar-helprequest-dropdown" >
+                    <NavDropdown.Item as={Link} to="/helpRequest/list" data-testid="appnavbar-helprequest-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/helpRequest/create" data-testid="appnavbar-helprequest-create">Create</NavDropdown.Item>
                   </NavDropdown>
                 )
               }
