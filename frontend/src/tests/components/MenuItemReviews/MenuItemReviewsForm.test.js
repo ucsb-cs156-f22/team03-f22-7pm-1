@@ -37,6 +37,25 @@ describe("MenuItemReviewsForm tests", () => {
         await waitFor( () => expect(getByTestId(/MenuItemReviewsForm-id/)).toHaveValue("2") );
     });
 
+    test("Correct Error messsages on bad input", async () => {
+
+        const { getByTestId, getByText } = render(
+            <Router  >
+                <MenuItemReviewsForm />
+            </Router>
+        );
+        await waitFor(() => expect(getByTestId("MenuItemReviewsForm-id")).toBeInTheDocument());
+        const dateReviewedField = getByTestId("MenuItemReviewsForm-dateReviewed");
+
+        const submitButton = getByTestId("MenuItemReviewsForm-submit");
+
+        fireEvent.change(dateReviewedField, { target: { value: 'bad-input' } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => expect(getByText(/dateReviewed must be in ISO format, e.g. 2022-01-02T15:30/)).toBeInTheDocument());
+
+    });
+
     test("Correct Error messsages when stars exceeds max 5", async () => {
 
         const { getByTestId, getByText } = render(
