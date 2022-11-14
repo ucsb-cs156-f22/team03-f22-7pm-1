@@ -13,6 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
+
 describe("MenuItemReviewsTable tests", () => {
   const queryClient = new QueryClient();
 
