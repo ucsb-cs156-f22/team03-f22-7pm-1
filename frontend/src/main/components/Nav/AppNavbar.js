@@ -74,6 +74,14 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
               }
               {
                 hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Recommendations" id="appnavbar-recommendations-dropdown" data-testid="appnavbar-recommendations-dropdown" >
+                    <NavDropdown.Item as={Link} to="/recommendations/list" data-testid="appnavbar-recommendations-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/recommendations/create" data-testid="appnavbar-recommendations-create">Create</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="Menu Item Review" id="appnavbar-menu-item-reviews-dropdown" data-testid="appnavbar-menu-item-reviews-dropdown" >
                     <NavDropdown.Item as={Link} to="/menuitemreviews/list" data-testid="appnavbar-menu-item-reviews-list">List</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/menuitemreviews/create" data-testid="appnavbar-menu-item-reviews-create">Create</NavDropdown.Item>
@@ -99,15 +107,6 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
-              {
-                hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="Recommendations" id="appnavbar-recommendations-dropdown" data-testid="appnavbar-recommendations-dropdown" >
-                    <NavDropdown.Item as={Link} to="/recommendations/list" data-testid="appnavbar-recommendations-list">List</NavDropdown.Item>
-                  </NavDropdown>
-                )
-              }
-              
-  
             </Nav>
             <Nav className="ml-auto">
               {/* This `nav` component contains all navigation items that show up on the right side */}
