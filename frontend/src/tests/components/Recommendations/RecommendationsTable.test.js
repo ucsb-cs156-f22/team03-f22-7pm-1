@@ -4,6 +4,7 @@ import RecommendationsTable from "main/components/Recommendations/Recommendation
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { cellToAxiosParamsDelete } from "main/components/Recommendations/RecommendationsTable";
 
 
 const mockedNavigate = jest.fn();
@@ -98,10 +99,23 @@ describe("RecommendationsTable tests", () => {
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    // expect(deleteButton).toBeInTheDocument();
-    // expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
 
+
+      
   });
+
+  test("test for correct parameters", () => {
+    const entry = { row: { values: { id: 5 } } };
+    const result = cellToAxiosParamsDelete(entry);
+    expect(result).toEqual({
+      url: "/api/Recommendation",
+      method: "DELETE",
+      params: { id: 5 }
+    });
+  });
+ 
 
 });
