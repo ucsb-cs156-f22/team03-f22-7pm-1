@@ -1,12 +1,12 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { recommendationsFixtures } from "fixtures/recommendationsFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import mockConsole from "jest-mock-console";
@@ -22,11 +22,11 @@ jest.mock('react-toastify', () => {
     };
 });
 
-describe("RecommendationsIndexPage tests", () => {
+describe("HelpRequestIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    const testId = "RecommendationsTable";
+    const testId = "HelpRequestTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -45,12 +45,12 @@ describe("RecommendationsIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendation/all").reply(200, []);
+        axiosMock.onGet("/api/helprequest/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <HelpRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -61,12 +61,12 @@ describe("RecommendationsIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendation/all").reply(200, []);
+        axiosMock.onGet("/api/helprequest/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <HelpRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -74,15 +74,15 @@ describe("RecommendationsIndexPage tests", () => {
 
     });
 
-    test("renders three recommendations without crashing for regular user", async () => {
+    test("renders three requests without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationsFixtures.threeRecommendations);
+        axiosMock.onGet("/api/helprequest/all").reply(200, helpRequestFixtures.threeRequests);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <HelpRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -93,15 +93,15 @@ describe("RecommendationsIndexPage tests", () => {
 
     });
 
-    test("renders three recommendations without crashing for admin user", async () => {
+    test("renders three Requests without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationsFixtures.threeRecommendations);
+        axiosMock.onGet("/api/helprequest/all").reply(200, helpRequestFixtures.threeRequests);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <HelpRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -116,21 +116,29 @@ describe("RecommendationsIndexPage tests", () => {
         setupUserOnly();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").timeout();
+        axiosMock.onGet("/api/helprequest/all").timeout();
 
-        const restoreConsole = mockConsole();
+        const _restoreConsole = mockConsole();
 
-        const { queryByTestId } = render(
+        const { getByText, queryByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <HelpRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
-
+        
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
-        restoreConsole();
+        
+        const expectedHeaders = ["id", "Requester Email", "Team Id", "Table Or BreakoutRoom", "Request Time & Date","Explanation","Solved?"];
 
+        expectedHeaders.forEach((headerText) => {
+            const header = getByText(headerText);
+            expect(header).toBeInTheDocument();
+        });
+
+        
+        //restoreConsole();
         expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
 
@@ -138,21 +146,21 @@ describe("RecommendationsIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationsFixtures.threeRecommendations);
-        axiosMock.onDelete("/api/Recommendation").reply(200, "Recommendation with id 1 was deleted");
+        axiosMock.onGet("/api/helprequest/all").reply(200, helpRequestFixtures.threeRequests);
+        axiosMock.onDelete("/api/helprequest", {params: {id: 1}}).reply(200, "HelpRequest with id 1 was deleted");
 
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <HelpRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
 
         await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
-       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
+        expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
 
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
@@ -160,10 +168,9 @@ describe("RecommendationsIndexPage tests", () => {
        
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Recommendation with id 1 was deleted") });
-    });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("HelpRequest with id 1 was deleted") });
 
-    
+    });
 
 });
 
