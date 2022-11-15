@@ -213,7 +213,7 @@ describe("AppNavbar tests", () => {
 
     });
 
-    test("renders the diningcommons menu correctly for an admin", async () => {
+    test("renders the menu item correctly for an admin", async () => {
 
         const currentUser = currentUserFixtures.adminUser;
         const systemInfo = systemInfoFixtures.showingBoth;
@@ -228,12 +228,12 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByTestId("appnavbar-dining-commons-dropdown")).toBeInTheDocument());
-        const dropdown = getByTestId("appnavbar-dining-commons-dropdown");
+        await waitFor(() => expect(getByTestId("appnavbar-menu-item-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-menu-item-dropdown");
         const aElement = dropdown.querySelector("a");
         expect(aElement).toBeInTheDocument();
         aElement?.click();
-        await waitFor( () => expect(getByTestId(/appnavbar-dining-commons-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-menu-item-list/)).toBeInTheDocument() );
 
     });
    
