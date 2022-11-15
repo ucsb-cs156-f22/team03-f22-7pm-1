@@ -29,6 +29,11 @@ import MenuItemReviewsIndexPage from "main/pages/MenuItemReviews/MenuItemReviews
 // import MenuItemReviewsEditPage from "main/pages/MenuItemReviews/MenuItemReviewsEditPage";
 import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
 
+
+
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
+
 function App() {
 
   const { data: currentUser } = useCurrentUser();
@@ -109,16 +114,34 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/recommendations/list" element={<RecommendationsIndexPage />} />
+        
             </>
           )
         }
         {
+
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/helpRequest/list" element={<HelpRequestIndexPage />} />
               <Route exact path="/helprequest/create" element={<HelpRequestCreatePage />} />
             </>
           )
+        }
+
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/articles/list" element={<ArticlesIndexPage />} />
+            </>
+          )
+        }
+
+        {
+        hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
+            </>
+        )
         }
 
       </Routes>
