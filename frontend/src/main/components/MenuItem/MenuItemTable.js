@@ -52,10 +52,12 @@ export default function MenuItemTable({ menuItem, currentUser }) {
         }
     ];
 
+    const testid = "MenuItemTable"
+
     const columnsIfAdmin = [
         ...columns,
         //ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"),
-        ButtonColumn("Delete", "danger", deleteCallback, "MenuItemTable")
+        ButtonColumn("Delete", "danger", deleteCallback, testid)
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
@@ -64,6 +66,6 @@ export default function MenuItemTable({ menuItem, currentUser }) {
     return <OurTable
         data={menuItem}
         columns={columnsToDisplay}
-        testid={"MenuItemTable"}
+        testid={testid}
     />;
 };
