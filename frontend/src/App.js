@@ -18,6 +18,8 @@ import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
+import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
