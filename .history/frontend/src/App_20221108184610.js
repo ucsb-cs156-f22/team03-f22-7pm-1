@@ -11,14 +11,11 @@ import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexP
 import DiningCommonsCreatePage from "main/pages/DiningCommons/DiningCommonsCreatePage";
 import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPage";
 
-import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
-import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 
-import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -54,13 +51,6 @@ function App() {
           )
         }
         {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/helpRequest/list" element={<HelpRequestIndexPage />} />
-            </>
-          )
-        }
-        {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
               <Route exact path="/diningCommons/create" element={<DiningCommonsCreatePage />} />
@@ -80,20 +70,6 @@ function App() {
             <>
               <Route exact path="/ucsbdates/create" element={<UCSBDatesCreatePage />} />
               <Route exact path="/ucsbdates/edit/:id" element={<UCSBDatesEditPage />} />
-            </>
-          )
-        }
-      {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/organizations/list" element={<OrganizationsIndexPage />} />
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/recommendations/list" element={<RecommendationsIndexPage />} />
             </>
           )
         }
