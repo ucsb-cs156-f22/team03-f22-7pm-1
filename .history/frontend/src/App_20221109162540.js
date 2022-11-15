@@ -12,7 +12,6 @@ import DiningCommonsCreatePage from "main/pages/DiningCommons/DiningCommonsCreat
 import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPage";
 
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
-import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
@@ -23,9 +22,6 @@ import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
 
-import MenuItemReviewsIndexPage from "main/pages/MenuItemReviews/MenuItemReviewsIndexPage";
-// import MenuItemReviewsEditPage from "main/pages/MenuItemReviews/MenuItemReviewsEditPage";
-import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
 
 function App() {
 
@@ -56,24 +52,6 @@ function App() {
           )
         }
         {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/menuitemreviews/list" element={<MenuItemReviewsIndexPage />} />
-             
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
-              
-              <Route exact path="/menuitemreviews/create" element={<MenuItemReviewsCreatePage />} />
-              {/* <Route exact path="/menuitemreviews/edit/:id" element={<MenuItemReviewsEditPage />} /> */}
-            </>
-          )
-        }
-        
-        {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
               <Route exact path="/diningCommons/create" element={<DiningCommonsCreatePage />} />
@@ -93,28 +71,6 @@ function App() {
             <>
               <Route exact path="/ucsbdates/create" element={<UCSBDatesCreatePage />} />
               <Route exact path="/ucsbdates/edit/:id" element={<UCSBDatesEditPage />} />
-            </>
-          )
-        }
-      {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/organizations/list" element={<OrganizationsIndexPage />} />
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/recommendations/list" element={<RecommendationsIndexPage />} />
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/helpRequest/list" element={<HelpRequestIndexPage />} />
-              <Route exact path="/helprequest/create" element={<HelpRequestCreatePage />} />
             </>
           )
         }

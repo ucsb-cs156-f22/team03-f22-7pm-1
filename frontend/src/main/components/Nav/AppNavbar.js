@@ -98,6 +98,22 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Articles" id="appnavbar-articles-dropdown" data-testid="appnavbar-articles-dropdown" >
+                    <NavDropdown.Item as={Link} to="/articles/list" data-testid="appnavbar-articles-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/articles/create" data-testid="appnavbar-articles-create">Create</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Recommendations" id="appnavbar-recommendations-dropdown" data-testid="appnavbar-recommendations-dropdown" >
+                    <NavDropdown.Item as={Link} to="/recommendations/list" data-testid="appnavbar-recommendations-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/recommendations/create" data-testid="appnavbar-recommendations-create">Create</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
   
             </Nav>
             <Nav className="ml-auto">
