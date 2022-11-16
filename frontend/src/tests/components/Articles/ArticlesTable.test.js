@@ -68,7 +68,7 @@ describe("ArticlesTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "Title", "Url","Explanation", "Email", "Date"];
+    const expectedHeaders = ["id", "Title", "Url","Explanation", "Email", "DateAdded"];
     const expectedFields = ["id", "title", "url","explanation","email", "dateAdded"];
     const testId = "ArticlesTable";
 
@@ -84,11 +84,7 @@ describe("ArticlesTable tests", () => {
 
     expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
     expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
-    expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
-    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
-    expect(editButton).toBeInTheDocument();
-    expect(editButton).toHaveClass("btn-primary");
 
     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
@@ -96,28 +92,5 @@ describe("ArticlesTable tests", () => {
 
   });
 
-  test("Edit button navigates to the edit page for admin user", async () => {
-
-    const currentUser = currentUserFixtures.adminUser;
-
-    const { getByTestId } = render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <ArticlesTable articles={articlesFixture.threeArticles} currentUser={currentUser} />
-        </MemoryRouter>
-      </QueryClientProvider>
-
-    );
-
-    await waitFor(() => { expect(getByTestId(`ArticlesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
-
-    const editButton = getByTestId(`ArticlesTable-cell-row-0-col-Edit-button`);
-    expect(editButton).toBeInTheDocument();
-    
-    fireEvent.click(editButton);
-
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/articles/edit/1'));
-
-  });
 
 });
