@@ -54,7 +54,7 @@ describe("ArticlesTable tests", () => {
     );
   });
 
-  test("Has the expected colum headers and content for adminUser", () => {
+  test("Has the expected column headers and content for adminUser", () => {
 
     const currentUser = currentUserFixtures.adminUser;
 
@@ -64,7 +64,7 @@ describe("ArticlesTable tests", () => {
           <ArticlesTable articles={articlesFixtures.threeArticles} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
-
+      
     );
 
     const expectedHeaders = ["id", "Title", "Url","Explanation", "Email", "DateAdded"];
