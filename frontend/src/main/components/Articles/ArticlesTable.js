@@ -6,11 +6,11 @@ import { hasRole } from "main/utils/currentUser";
 
 export default function ArticlesTable({ articles, currentUser }) {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    const editCallback = (cell) => {
-        navigate(`/articles/edit/${cell.row.values.id}`)
-    }
+    //const editCallback = (cell) => {
+        //navigate(`/articles/edit/${cell.row.values.id}`)
+    //}
 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
@@ -50,11 +50,10 @@ export default function ArticlesTable({ articles, currentUser }) {
         }
     ];
 
-    const testid = "ArticlesTable";
 
     const columnsIfAdmin = [
         ...columns,
-        ButtonColumn("Edit", "primary", editCallback, "ArticlesTable"),
+        //ButtonColumn("Edit", "primary", editCallback, "ArticlesTable"),
         ButtonColumn("Delete", "danger", deleteCallback, "ArticlesTable")
     ];
 
@@ -63,6 +62,6 @@ export default function ArticlesTable({ articles, currentUser }) {
     return <OurTable
         data={articles}
         columns={columnsToDisplay}
-        testid={testid}
+        testid={"ArticlesTable"}
     />;
 };
