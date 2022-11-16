@@ -62,7 +62,7 @@ describe("ArticlesTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable artickes={articlesFixture.twoArticles} currentUser={currentUser} />
+          <ArticlesTable artickes={articlesFixture.threeArticles} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -84,6 +84,7 @@ describe("ArticlesTable tests", () => {
 
     expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
     expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -102,7 +103,7 @@ describe("ArticlesTable tests", () => {
     const { getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={articlesFixture.twoArticles} currentUser={currentUser} />
+          <ArticlesTable articles={articlesFixture.threeArticles} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 

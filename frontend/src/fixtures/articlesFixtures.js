@@ -7,7 +7,7 @@ const articlesFixture = {
         "email": "phtcon@ucsb.edu",
         "dateAdded": "2022-04-20T12:00:00"
     },
-    twoArticles: [
+    threeArticles: [
         {
             "id": 1,
             "title": "Using testing-playground with React Testing Library",
@@ -24,6 +24,14 @@ const articlesFixture = {
             "email": "phtcon@ucsb.edu",
             "dateAdded": "2022-04-19T12:00:00"
         },
+        {
+            "id": 3,
+            "title": "Handy Spring Utility Classes",
+            "url": "https://twitter.com/maciejwalkowiak/status/1511736828369719300?t=gGXpmBH4y4eY9OBSUInZEg&s=09",
+            "explanation": "A lot of really useful classes are built into Spring",
+            "email": "phtcon@ucsb.edu",
+            "dateAdded": "2022-04-19T12:00:00"
+        }
     ]
 };
 

@@ -32,7 +32,6 @@ import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReview
 
 
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
-import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
 
 function App() {
 
@@ -134,14 +133,6 @@ function App() {
               <Route exact path="/articles/list" element={<ArticlesIndexPage />} />
             </>
           )
-        }
-
-        {
-        hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
-              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
-            </>
-        )
         }
 
       </Routes>
