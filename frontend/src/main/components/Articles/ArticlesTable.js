@@ -1,8 +1,18 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/ArticlesUtils"
+import { onDeleteSuccess } from "main/utils/UCSBDateUtils";
 //import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
+
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/articles",
+        method: "DELETE",
+        params: {
+            id: cell.row.values.id
+        }
+    }
+}
 
 export default function ArticlesTable({ articles, currentUser }) {
 
