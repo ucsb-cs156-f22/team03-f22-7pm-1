@@ -78,7 +78,7 @@ describe("ArticlesIndexPage tests", () => {
     test("renders two articles without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, articlesFixture.threeArticles);
+        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -97,7 +97,7 @@ describe("ArticlesIndexPage tests", () => {
     test("renders two articles without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, articlesFixture.threeArticles);
+        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -139,7 +139,7 @@ describe("ArticlesIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, articlesFixture.threeArticles);
+        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
         axiosMock.onDelete("/api/articles").reply(200, "Article with id 1 was deleted");
 
 
