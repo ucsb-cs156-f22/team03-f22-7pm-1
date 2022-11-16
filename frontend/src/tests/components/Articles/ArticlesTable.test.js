@@ -1,10 +1,9 @@
-import { _fireEvent, render, _waitFor } from "@testing-library/react";
-import { articlesFixture } from "fixtures/articlesFixtures";
+import { render } from "@testing-library/react";
 import ArticlesTable from "main/components/Articles/ArticlesTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
-
+import { articlesFixtures } from "fixtures/articlesFixtures";
 
 const mockedNavigate = jest.fn();
 

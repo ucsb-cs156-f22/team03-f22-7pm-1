@@ -10,7 +10,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import mockConsole from "jest-mock-console";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
-import { articlesFixture } from "fixtures/articlesFixtures";
+import { articlesFixtures } from "fixtures/articlesFixtures";
 
 
 const mockToast = jest.fn();

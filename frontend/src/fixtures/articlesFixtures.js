@@ -1,4 +1,4 @@
-const articlesFixture = {
+const articlesFixtures = {
     oneArticle: {
         "id": 1,
         "title": "Using testing-playground with React Testing Library",
@@ -36,4 +36,4 @@ const articlesFixture = {
 };
 
 
-export { articlesFixture };
+export { articlesFixtures };
