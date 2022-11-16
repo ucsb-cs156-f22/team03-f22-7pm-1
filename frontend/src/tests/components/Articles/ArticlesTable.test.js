@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
 import { articlesFixture } from "fixtures/articlesFixtures";
 import ArticlesTable from "main/components/Articles/ArticlesTable"
 import { QueryClient, QueryClientProvider } from "react-query";
