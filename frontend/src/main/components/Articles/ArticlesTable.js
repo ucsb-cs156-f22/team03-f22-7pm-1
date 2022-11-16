@@ -25,7 +25,7 @@ export default function ArticlesTable({ articles, currentUser }) {
 
     const columns = [
         {
-            Header: 'Id',
+            Header: 'id',
             accessor: 'id', // accessor is the "key" in the data
         },
         {
